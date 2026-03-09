@@ -1,4 +1,4 @@
-// 河南工业大学(haut.edu.cn) 拾光课程表适配脚本
+// 甘肃医学院(gsmc.edu.cn) 拾光课程表适配脚本
 // 基于正方教务系统接口适配
 // 非该大学开发者适配,开发者无法及时发现问题
 // 出现问题请提issues或者提交pr更改,这更加快速
@@ -117,7 +117,7 @@ function parseJsonData(jsonData) {
  */
 function isLoginPage() {
     const url = window.location.href;
-    const loginUrl = "https://jwglxt.haut.edu.cn/jwglxt/xtgl/login_slogin.html";
+    const loginUrl = "https://jw.gsmc.edu.cn/jwglxt/xtgl/login_slogin.html";
     
     // 如果当前 URL 与指定的登录 URL 完全一致，则返回 true (是登录页)
     return url === loginUrl; 
@@ -149,7 +149,7 @@ async function getAcademicYear() {
     console.log("JS: 提示用户输入学年。");
     return await window.AndroidBridgePromise.showPrompt(
         "选择学年",
-        "请输入要导入课程的起始学年（例如 2025-2026 应输入2025）:",
+        "请输入要导入课程的起始学年（如2025-2026 应该填2025）:",
         currentYear,
         "validateYearInput"
     );
@@ -185,7 +185,7 @@ async function fetchAndParseCourses(academicYear, semesterIndex) {
     
     // API URL 和请求体
     const xnmXqmBody = `xnm=${academicYear}&xqm=${semesterCode}&kzlx=ck&xsdm=&kclbdm=`; 
-    const url = "https://jwglxt.haut.edu.cn/jwglxt/kbcx/xskbcx_cxXsgrkb.html?gnmkdm=N2151";
+    const url = "https://jw.gsmc.edu.cn/jwglxt/kbcx/xskbcx_cxXsgrkb.html?gnmkdm=N2151";
 
     console.log(`JS: 发送请求到 ${url}, body: ${xnmXqmBody}`);
 
@@ -256,17 +256,18 @@ async function saveCourses(parsedCourses) {
 
 // 统一作息时间
 const TimeSlots = [
-    { number: 1, startTime: "08:30", endTime: "09:15" },
-    { number: 2, startTime: "09:20", endTime: "10:05" },
-    { number: 3, startTime: "10:25", endTime: "11:10" },
-    { number: 4, startTime: "11:15", endTime: "12:00" },
+    { number: 1, startTime: "08:00", endTime: "08:45" },
+    { number: 2, startTime: "08:55", endTime: "09:40" },
+    { number: 3, startTime: "10:00", endTime: "10:45" },
+    { number: 4, startTime: "10:55", endTime: "11:40" },
     { number: 5, startTime: "14:30", endTime: "15:15" },
-    { number: 6, startTime: "15:20", endTime: "16:05" },
-    { number: 7, startTime: "16:25", endTime: "17:10" },
-    { number: 8, startTime: "17:15", endTime: "18:00" },
-    { number: 9, startTime: "19:30", "endTime": "20:15" },
-    { number: 10, startTime: "20:25", "endTime": "21:10" },
-    { number: 11, startTime: "21:20", "endTime": "22:30" }
+    { number: 6, startTime: "15:25", endTime: "16:10" },
+    { number: 7, startTime: "16:30", endTime: "17:15" },
+    { number: 8, startTime: "17:25", endTime: "18:10" },
+    { number: 9, startTime: "18:20", "endTime": "19:05" },
+    { number: 10, startTime: "19:30", "endTime": "20:15" },
+    { number: 11, startTime: "20:25", "endTime": "21:10" },
+    { number: 12, startTime: "21:20", "endTime": "22:05" }
 ];
 
 async function importPresetTimeSlots(timeSlots) {

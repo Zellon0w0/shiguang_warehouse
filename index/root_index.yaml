@@ -148,6 +148,11 @@ schools:
     initial: "X"
     resource_folder: "XMCU"
 
+  - id: "XZIT"
+    name: "徐州工程学院"
+    initial: "X"
+    resource_folder: "XZIT"
+
   - id: "HBLGXY"
     name: "淮北理工学院"
     initial: "H"
